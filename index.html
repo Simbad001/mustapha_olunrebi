@@ -97,7 +97,10 @@
   .article h3 { margin:0 0 6px; font-size:19px; }
   .article p { margin:0; color:var(--muted); font-size:15px; }
   .article:hover h3 { color:var(--accent); }
-  @media (max-width:760px){ .articles { grid-template-columns:1fr; } }
+  .articles.three { grid-template-columns:repeat(3,1fr); }
+  .articles.three img { aspect-ratio:16/10; }
+  @media (max-width:900px){ .articles.three { grid-template-columns:1fr 1fr; } }
+  @media (max-width:760px){ .articles, .articles.three { grid-template-columns:1fr; } }
 
   .timeline { display:grid; gap:18px; }
   .job { display:grid; grid-template-columns:170px 1fr; gap:20px; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; }
@@ -289,6 +292,23 @@
         <div><h3>Listening to Gears: The Physics of the Gear Mesh</h3><p>Transmission error, gear-mesh frequency, sidebands and contact overlap. How to read what a gear pair is telling you, and why the precision behind it matters.</p></div>
       </a>
     </div>
+
+    <h3 class="certh">Presentations &amp; posters</h3>
+    <p class="sub">Shared as documents on LinkedIn. Click to open the PDF.</p>
+    <div class="articles three">
+      <a class="article" href="docs/structural-health-monitoring.pdf" target="_blank" rel="noopener">
+        <img src="images/doc-structural-health-monitoring.jpg" alt="Structural Health Monitoring title slide">
+        <div><h3>Structural Health Monitoring</h3><p>Vibration-based fault detection, data acquisition, a LabVIEW analysis, a CNC toolholder case and wind turbine monitoring. 18 slides.</p></div>
+      </a>
+      <a class="article" href="docs/gears-power-behind-precision.pdf" target="_blank" rel="noopener">
+        <img src="images/doc-gears-power-behind-precision.jpg" alt="Gears: The Power Behind Precision title slide">
+        <div><h3>Gears: The Power Behind Precision</h3><p>Gear types, design, manufacturing and applications, from watches to wind turbines. 14 slides.</p></div>
+      </a>
+      <a class="article" href="docs/precision-machining-fatigue.pdf" target="_blank" rel="noopener">
+        <img src="images/doc-precision-machining-fatigue.jpg" alt="Why Precision and Machining Matter in Design poster" style="object-position:50% 0">
+        <div><h3>Why Precision &amp; Machining Matter in Design</h3><p>Surface finish and fatigue, basic fatigue parameters and a comparison of manufacturing processes by precision, cost and fatigue impact. One-page poster.</p></div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -449,6 +469,11 @@
     "Why lapping is specified for noise but also improves function, catches manufacturing deviations before assembly and protects operators from noise exposure.": "Warum Läppen wegen des Geräuschs vorgeschrieben wird, aber auch die Funktion verbessert, Fertigungsabweichungen vor der Montage aufdeckt und Mitarbeitende vor Lärm schützt.",
     "Transmission error, gear-mesh frequency, sidebands and contact overlap. How to read what a gear pair is telling you, and why the precision behind it matters.": "Drehwegabweichung, Zahneingriffsfrequenz, Seitenbänder und Überdeckung. Wie man liest, was eine Radpaarung verrät, und warum die Präzision dahinter zählt.",
 
+    "Presentations &amp; posters": "Präsentationen &amp; Poster",
+    "Shared as documents on LinkedIn. Click to open the PDF.": "Auf LinkedIn als Dokumente veröffentlicht, auf Englisch. Klicken öffnet das PDF.",
+    "Vibration-based fault detection, data acquisition, a LabVIEW analysis, a CNC toolholder case and wind turbine monitoring. 18 slides.": "Schwingungsbasierte Fehlererkennung, Messdatenerfassung, eine LabVIEW-Auswertung, ein Fallbeispiel CNC-Werkzeughalter und die Überwachung von Windenergieanlagen. 18 Folien.",
+    "Gear types, design, manufacturing and applications, from watches to wind turbines. 14 slides.": "Verzahnungsarten, Auslegung, Fertigung und Anwendungen, von der Uhr bis zur Windenergieanlage. 14 Folien.",
+    "Surface finish and fatigue, basic fatigue parameters and a comparison of manufacturing processes by precision, cost and fatigue impact. One-page poster.": "Oberflächengüte und Ermüdung, Grundgrößen der Betriebsfestigkeit und ein Vergleich von Fertigungsverfahren nach Genauigkeit, Kosten und Einfluss auf die Ermüdung. Einseitiges Poster.",
     "Newest first.": "Aktuellste zuerst.",
     "05/2024 – present<br>Remote": "05/2024 – heute<br>Remote",
     "06/2023 – 02/2024<br>Denkendorf, Germany": "06/2023 – 02/2024<br>Denkendorf",
