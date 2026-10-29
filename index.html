@@ -36,6 +36,11 @@
   nav ul a { text-decoration:none; color:var(--muted); font-size:15px; }
   nav ul a:hover { color:var(--ink); }
   @media (max-width:760px){ nav ul { display:none; } }
+  .navr { display:flex; align-items:center; gap:22px; }
+  .lang { display:flex; border:1px solid var(--line); border-radius:7px; overflow:hidden; }
+  .lang button { border:0; background:transparent; color:var(--muted); font:inherit; font-size:13px; font-weight:600; padding:5px 10px; cursor:pointer; }
+  .lang button[aria-pressed="true"] { background:var(--accent); color:#fff; }
+  @media (prefers-color-scheme: dark){ .lang button[aria-pressed="true"] { color:#0f1a26; } }
 
   .hero { padding:72px 0 56px; }
   .hero .intro { display:grid; grid-template-columns: 1fr 230px; gap:48px; align-items:center; }
@@ -113,13 +118,19 @@
 <nav>
   <div class="wrap">
     <a class="logo" href="#top">Mustapha <span>Olunrebi</span></a>
-    <ul>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#articles">Articles</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="navr">
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#articles">Articles</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="de" aria-pressed="false">DE</button>
+      </div>
+    </div>
   </div>
 </nav>
 
@@ -328,6 +339,144 @@
 </section>
 
 <footer>© 2026 Mustapha Olunrebi · Bremen, Germany</footer>
+
+<script>
+(function () {
+  var DE = {
+    "Projects": "Projekte",
+    "Articles": "Artikel",
+    "Experience": "Berufserfahrung",
+    "Skills": "Kenntnisse",
+    "Contact": "Kontakt",
+    "Mechanical Engineer · M.Eng. · Bremen, Germany": "Maschinenbauingenieur · M.Eng. · Bremen",
+    "I design, test and analyse mechanical systems.": "Ich konstruiere, prüfe und berechne mechanische Systeme.",
+    "From roller brake test rigs in Nigeria to vibration-based lifetime estimation of CNC toolholders in Germany. Design, FEM, fatigue and measurement, with the data to back up each decision.": "Von Rollenbremsprüfständen in Nigeria bis zur schwingungsbasierten Lebensdauerabschätzung von CNC-Werkzeughaltern in Deutschland. Konstruktion, FEM, Betriebsfestigkeit und Messtechnik, mit Daten hinter jeder Entscheidung.",
+    "See my projects": "Zu meinen Projekten",
+    "Get in touch": "Kontakt aufnehmen",
+    "4 yrs": "4 Jahre",
+    "designing and commissioning test rigs": "Konstruktion und Inbetriebnahme von Prüfständen",
+    "Hochschule Esslingen, Design &amp; Development": "Hochschule Esslingen, Design &amp; Development",
+    "failure-analysis checks matched in fasolver": "Nachweise in fasolver bestätigt",
+    "gear types in my interactive mesh simulator": "Verzahnungsarten in meinem interaktiven Simulator",
+    "Featured projects": "Ausgewählte Projekte",
+    "Each project shows the problem, what I did and what came out of it.": "Zu jedem Projekt: die Aufgabe, mein Beitrag und das Ergebnis.",
+    "Problem": "Aufgabe",
+    "What I did": "Mein Beitrag",
+    "Result": "Ergebnis",
+
+    "Master's thesis · Vibration &amp; reliability": "Masterarbeit · Schwingungen &amp; Zuverlässigkeit",
+    "Vibration-based lifetime estimation of CNC toolholders": "Schwingungsbasierte Lebensdauerabschätzung von CNC-Werkzeughaltern",
+    "Dirlik method": "Dirlik-Methode",
+    "3-axis accelerometers": "3-Achs-Beschleunigungssensoren",
+    "Thesis at ESA Eppinger GmbH, a toolholder manufacturer near Stuttgart. I estimated toolholder fatigue life from measured vibration in the frequency domain.": "Masterarbeit bei der ESA Eppinger GmbH, einem Werkzeughalterhersteller bei Stuttgart. Ich habe die Lebensdauer von Werkzeughaltern aus gemessenen Schwingungen im Frequenzbereich abgeschätzt.",
+    "Acoustic end-of-line checks catch defects late and say nothing about remaining life.": "Akustische Endprüfungen erkennen Fehler spät und sagen nichts über die Restlebensdauer aus.",
+    "Designed and built the test setup, recorded 3-axis vibration under operating conditions, and built the PSD-to-damage workflow.": "Prüfaufbau konstruiert und aufgebaut, Schwingungen in drei Achsen unter Betriebsbedingungen gemessen und den Ablauf von der PSD bis zur Schädigung umgesetzt.",
+    "Anomalies and defects were detected more reliably than with conventional acoustic testing.": "Anomalien und Defekte wurden zuverlässiger erkannt als mit der herkömmlichen akustischen Prüfung.",
+
+    "Industry · Test rig design &amp; commissioning": "Industrie · Prüfstandsbau &amp; Inbetriebnahme",
+    "Roller brake test rigs for vehicle inspection centres": "Rollenbremsprüfstände für Fahrzeugprüfstellen",
+    "Sensors &amp; actuators": "Sensorik &amp; Aktorik",
+    "Calibration": "Kalibrierung",
+    "Root-cause analysis": "Ursachenanalyse",
+    "Four years at LACVIS Nigeria, which runs computerised vehicle inspection centres in Lagos.": "Vier Jahre bei LACVIS Nigeria, dem Betreiber computergestützter Fahrzeugprüfstellen in Lagos.",
+    "Inspection results stand or fall with test rigs that measure accurately and keep running under heavy daily use.": "Prüfergebnisse hängen an Prüfständen, die genau messen und im harten Tagesbetrieb zuverlässig laufen.",
+    "Designed rig components in 3D CAD, selected sensors, actuators and measurement hardware, commissioned and calibrated rigs on site.": "Komponenten in 3D-CAD konstruiert, Sensoren, Aktoren und Messtechnik ausgewählt, Prüfstände vor Ort in Betrieb genommen und kalibriert.",
+    "Higher rig availability through measurement-based fault finding and design improvements.": "Höhere Verfügbarkeit der Prüfstände durch messdatengestützte Fehlersuche und konstruktive Verbesserungen.",
+
+    "Interactive tool · Gears &amp; NVH": "Interaktives Tool · Verzahnung &amp; NVH",
+    "Spur &amp; helical": "Gerad- &amp; Schrägverzahnung",
+    "Bevel &amp; hypoid": "Kegel- &amp; Hypoidräder",
+    "Worm": "Schnecke",
+    "Planetary": "Planetengetriebe",
+    "Mesh frequency": "Zahneingriffsfrequenz",
+    "A browser tool that animates a gear pair with adjustable tooth counts, speed and tooth errors, and lets you see and hear the difference between unlapped and lapped gears.": "Ein Browser-Tool, das eine Radpaarung mit einstellbaren Zähnezahlen, Drehzahlen und Verzahnungsfehlern animiert. Der Unterschied zwischen ungeläppten und geläppten Zahnrädern wird sichtbar und hörbar.",
+    "Gear noise is easy to measure and hard to explain to non-specialists.": "Verzahnungsgeräusche sind leicht zu messen, aber Nicht-Fachleuten schwer zu erklären.",
+    "Built an interactive model with seven gear types, 2D and 3D views, transmission error and an audio preview of the mesh whine.": "Interaktives Modell mit sieben Verzahnungsarten, 2D- und 3D-Ansicht, Drehwegabweichung und hörbarem Verzahnungsheulen entwickelt.",
+    "A teaching and troubleshooting aid that runs in any browser, no install.": "Eine Hilfe für Schulung und Fehlersuche, die in jedem Browser ohne Installation läuft.",
+    "Try the simulator →": "Simulator ausprobieren →",
+
+    "Software · Fatigue &amp; failure analysis": "Software · Betriebsfestigkeit &amp; Schadensanalyse",
+    "fasolver: a Python failure-analysis toolkit": "fasolver: ein Python-Werkzeug für die Schadensanalyse",
+    "Fatigue &amp; fracture": "Ermüdung &amp; Bruch",
+    "Crack growth": "Risswachstum",
+    "Buckling": "Knicken &amp; Beulen",
+    "40 automated tests": "40 automatisierte Tests",
+    "A toolkit that ranks likely failure mechanisms from observations and then runs the strength, fracture and crack-growth checks that confirm or rule them out.": "Ein Werkzeug, das aus Befunden die wahrscheinlichen Schadensmechanismen ableitet und anschließend die Festigkeits-, Bruch- und Risswachstumsnachweise rechnet, die sie bestätigen oder ausschließen.",
+    "Failure investigations often jump to a cause before the numbers are checked.": "Schadensuntersuchungen legen sich oft auf eine Ursache fest, bevor nachgerechnet wurde.",
+    "Wrote 18 mechanism cards and the matching calculations, then re-solved twelve documented failures from 1943 to 2018.": "18 Schadensmechanismen mit den passenden Berechnungen umgesetzt und zwölf dokumentierte Schadensfälle von 1943 bis 2018 nachgerechnet.",
+    "77 of 77 checks agree with the published values. Every formula is covered by a test.": "77 von 77 Nachweisen stimmen mit den veröffentlichten Werten überein. Jede Formel ist durch einen Test abgesichert.",
+
+    "Condition monitoring · Signal processing": "Zustandsüberwachung · Signalverarbeitung",
+    "Bearing fault diagnostics from vibration": "Wälzlagerdiagnose aus Schwingungsdaten",
+    "Envelope analysis": "Hüllkurvenanalyse",
+    "Hilbert transform": "Hilbert-Transformation",
+    "Physics-based bearing diagnostics: band-pass filtering, envelope spectrum and kinematic defect frequencies, checked against public bearing test data.": "Physikbasierte Wälzlagerdiagnose mit Bandpassfilter, Hüllkurvenspektrum und kinematischen Schadensfrequenzen, geprüft an öffentlichen Lagerprüfdaten.",
+    "Early bearing damage hides below the normal vibration spectrum.": "Beginnende Lagerschäden gehen im normalen Schwingungsspektrum unter.",
+    "Wrote the processing chain in Python and compared it with data-driven approaches.": "Die Auswertekette in Python programmiert und mit datengetriebenen Ansätzen verglichen.",
+    "Defect frequencies traced to a physical cause, not just an alarm that something changed.": "Schadensfrequenzen werden einer physikalischen Ursache zugeordnet, statt nur zu melden, dass sich etwas verändert hat.",
+
+    "Technical writing for engineers and the people who work with them.": "Fachartikel für Ingenieure und alle, die mit ihnen arbeiten. Die Artikel sind auf Englisch.",
+    "Why lapping is specified for noise but also improves function, catches manufacturing deviations before assembly and protects operators from noise exposure.": "Warum Läppen wegen des Geräuschs vorgeschrieben wird, aber auch die Funktion verbessert, Fertigungsabweichungen vor der Montage aufdeckt und Mitarbeitende vor Lärm schützt.",
+    "Transmission error, gear-mesh frequency, sidebands and contact overlap. How to read what a gear pair is telling you, and why the precision behind it matters.": "Drehwegabweichung, Zahneingriffsfrequenz, Seitenbänder und Überdeckung. Wie man liest, was eine Radpaarung verrät, und warum die Präzision dahinter zählt.",
+
+    "Newest first.": "Aktuellste zuerst.",
+    "05/2024 – present<br>Remote": "05/2024 – heute<br>Remote",
+    "06/2023 – 02/2024<br>Denkendorf, Germany": "06/2023 – 02/2024<br>Denkendorf",
+    "Project Engineer": "Projektingenieur",
+    "Design reviews and optimisation of mechanical systems, including design for manufacturing": "Konstruktive Bewertung und Optimierung mechanischer Systeme, inklusive fertigungsgerechter Gestaltung",
+    "FEM strength assessments under static and dynamic loads (ANSYS Workbench)": "FEM-Festigkeitsnachweise unter statischen und dynamischen Lasten (ANSYS Workbench)",
+    "Technical specifications, documentation and task tracking in SAP and MS Project": "Technische Spezifikationen, Dokumentation und Aufgabenverfolgung in SAP und MS Project",
+    "R&amp;D Test &amp; Automation (Master's thesis)": "F&amp;E Test &amp; Automatisierung (Masterarbeit)",
+    "Designed and built test setups for rotating toolholder systems": "Konzeption und Aufbau von Prüfeinrichtungen für rotierende Werkzeughaltersysteme",
+    "Frequency-domain fatigue life estimation (PSD, Dirlik)": "Lebensdauerabschätzung im Frequenzbereich (PSD, Dirlik)",
+    "Data acquisition and signal analysis with NI-DAQ, LabVIEW and Python": "Messdatenerfassung und Signalanalyse mit NI-DAQ, LabVIEW und Python",
+    "Design &amp; Development Engineer": "Konstruktions- und Entwicklungsingenieur",
+    "Design and validation of vehicle test and diagnostic rigs in 3D CAD": "Konstruktion und Validierung von Fahrzeugprüf- und Diagnoseanlagen in 3D-CAD",
+    "Selection and integration of sensors, actuators and measurement systems": "Auswahl und Integration von Sensoren, Aktoren und Messsystemen",
+    "Commissioning, calibration and root-cause analysis on rigs in operation": "Inbetriebnahme, Kalibrierung und Ursachenanalyse an Anlagen im Betrieb",
+
+    "Skills &amp; education": "Kenntnisse &amp; Ausbildung",
+    "Design": "Konstruktion",
+    "Creo Parametric, Autodesk Inventor, FreeCAD, technical drawings, GD&amp;T (ASME Y14.5), design for manufacturing": "Creo Parametric, Autodesk Inventor, FreeCAD, technische Zeichnungen, GD&amp;T (ASME Y14.5), fertigungsgerechte Konstruktion",
+    "Analysis": "Berechnung",
+    "ANSYS Workbench (static, modal, fatigue), FEM, fatigue and fracture, vibration and NVH": "ANSYS Workbench (statisch, modal, Ermüdung), FEM, Betriebsfestigkeit und Bruchmechanik, Schwingungen und NVH",
+    "Test &amp; measurement": "Mess- &amp; Prüftechnik",
+    "Test rig design, commissioning, calibration, NI-DAQ, LabVIEW, accelerometers, signal processing": "Prüfstandsbau, Inbetriebnahme, Kalibrierung, NI-DAQ, LabVIEW, Beschleunigungssensoren, Signalverarbeitung",
+    "Software &amp; tools": "Software &amp; Tools",
+    "Education": "Ausbildung",
+    "M.Eng. Design and Development in Automotive and Mechanical Engineering, Hochschule Esslingen (2024)": "M.Eng. Design and Development in Automotive and Mechanical Engineering, Hochschule Esslingen (2024)",
+    "Languages &amp; certificates": "Sprachen &amp; Zertifikate",
+    "English C1, German B2. Structural Integrity of Offshore Wind Turbine Foundations, GD&amp;T &amp; Tolerance Stack-Up, Machining Modelling (2025)": "Englisch C1, Deutsch B2. Structural Integrity of Offshore Wind Turbine Foundations, GD&amp;T &amp; Tolerance Stack-Up, Machining Modelling (2025)",
+
+    "Let's talk": "Sprechen wir",
+    "Open to design, test and analysis engineering roles in Germany.": "Offen für Positionen in Konstruktion, Versuch und Berechnung in Deutschland.",
+    "© 2026 Mustapha Olunrebi · Bremen, Germany": "© 2026 Mustapha Olunrebi · Bremen"
+  };
+  var TITLE = { en: document.title, de: "Mustapha Olunrebi | Maschinenbauingenieur" };
+  var norm = function (s) { return s.replace(/\s+/g, " ").trim(); };
+  var nodes = [];
+  document.querySelectorAll("body *:not(script):not(style)").forEach(function (el) {
+    var key = norm(el.innerHTML);
+    if (Object.prototype.hasOwnProperty.call(DE, key)) nodes.push([el, el.innerHTML, DE[key]]);
+  });
+  function setLang(lang) {
+    nodes.forEach(function (n) { n[0].innerHTML = lang === "de" ? n[2] : n[1]; });
+    document.documentElement.lang = lang;
+    document.title = TITLE[lang];
+    document.querySelectorAll(".lang button").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+    });
+    try { localStorage.setItem("lang", lang); } catch (e) {}
+  }
+  document.querySelectorAll(".lang button").forEach(function (b) {
+    b.addEventListener("click", function () { setLang(b.dataset.lang); });
+  });
+  var q = new URLSearchParams(location.search).get("lang"), saved = null;
+  try { saved = localStorage.getItem("lang"); } catch (e) {}
+  var start = q || saved || ((navigator.language || "").toLowerCase().indexOf("de") === 0 ? "de" : "en");
+  if (start === "de") setLang("de");
+})();
+</script>
 
 </body>
 </html>
