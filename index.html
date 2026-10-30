@@ -76,6 +76,8 @@
   .gallery figure { margin:0; }
   .gallery img { width:100%; height:240px; object-fit:cover; border-radius:8px; border:1px solid var(--line); background:#fff; display:block; }
   .gallery .wide img { object-fit:contain; }
+  .gallery.two { grid-template-columns:1fr 1fr; }
+  .gallery.two img { height:200px; }
   .gallery figcaption { font-size:13px; color:var(--muted); margin-top:6px; }
   @media (max-width:820px){ .gallery { grid-template-columns:1fr; padding:0 18px 20px; } .gallery img { height:auto; max-height:320px; } }
   .project .img.art { background:linear-gradient(135deg,#1f4e79,#2a7a62); color:#fff; }
@@ -260,17 +262,21 @@
       </article>
 
       <article class="project">
-        <div class="img"><img class="contain" src="images/physics-vs-ai.png" alt="Physics versus AI in machine troubleshooting" style="background:#f6f5f1"></div>
+        <div class="img"><a href="images/cm-fault-simulation.png" target="_blank" rel="noopener"><img class="contain" src="images/cm-fault-simulation.png" alt="Bearing fault simulation with time waveform and spectrum" style="background:#eef1f4"></a></div>
         <div class="body">
-          <div class="cat">Condition monitoring · Signal processing</div>
-          <h3>Bearing fault diagnostics from vibration</h3>
-          <ul class="tags"><li>FFT</li><li>Envelope analysis</li><li>Hilbert transform</li><li>BPFO / BPFI / BSF</li><li>Python</li></ul>
-          <p>Physics-based bearing diagnostics: band-pass filtering, envelope spectrum and kinematic defect frequencies, checked against public bearing test data.</p>
+          <div class="cat">Product in development · Condition monitoring</div>
+          <h3>Vibration-based condition monitoring for rotating machinery</h3>
+          <ul class="tags"><li>FFT &amp; PSD</li><li>Envelope analysis</li><li>BPFO / BPFI / BSF / FTF</li><li>Gear mesh &amp; sidebands</li><li>Python</li><li>Web app</li></ul>
+          <p>An independent product I am developing, building on my master's thesis: a web-based tool that turns vibration measurements from spindles, toolholders, bearings and gears into a clear health status for each component. Details on request.</p>
           <div class="pwm">
-            <div><h4>Problem</h4><p>Early bearing damage hides below the normal vibration spectrum.</p></div>
-            <div><h4>What I did</h4><p>Wrote the processing chain in Python and compared it with data-driven approaches.</p></div>
-            <div><h4>Result</h4><p>Defect frequencies traced to a physical cause, not just an alarm that something changed.</p></div>
+            <div><h4>Problem</h4><p>Vibration data gets recorded, but rarely turned into a decision a maintenance team can act on.</p></div>
+            <div><h4>What I did</h4><p>Designed the signal-processing chain: FFT and PSD, band-pass filtering, Hilbert envelope, bearing and gear fault frequencies, and an automatic report that flags each component.</p></div>
+            <div><h4>Result</h4><p>Faults traced to a physical cause per component, validated on public bearing-fault datasets and real test-bench measurements.</p></div>
           </div>
+        </div>
+        <div class="gallery two">
+          <figure class="wide"><a href="images/cm-envelope.png" target="_blank" rel="noopener"><img src="images/cm-envelope.png" alt="Envelope spectrum with bearing fault frequency markers"></a><figcaption>Envelope spectrum of a spindle bearing pair, with BPFO, BPFI, BSF and FTF markers</figcaption></figure>
+          <figure class="wide"><a href="images/cm-report.png" target="_blank" rel="noopener"><img src="images/cm-report.png" alt="Automatic report flagging bearings and gear stages"></a><figcaption>Automatic report from a 5000 rpm test: each bearing and gear stage flagged OK or FAULT</figcaption></figure>
         </div>
       </article>
 
@@ -456,14 +462,17 @@
     "Wrote 18 mechanism cards and the matching calculations, then re-solved twelve documented failures from 1943 to 2018.": "18 Schadensmechanismen mit den passenden Berechnungen umgesetzt und zwölf dokumentierte Schadensfälle von 1943 bis 2018 nachgerechnet.",
     "77 of 77 checks agree with the published values. Every formula is covered by a test.": "77 von 77 Nachweisen stimmen mit den veröffentlichten Werten überein. Jede Formel ist durch einen Test abgesichert.",
 
-    "Condition monitoring · Signal processing": "Zustandsüberwachung · Signalverarbeitung",
-    "Bearing fault diagnostics from vibration": "Wälzlagerdiagnose aus Schwingungsdaten",
+    "Product in development · Condition monitoring": "Produkt in Entwicklung · Zustandsüberwachung",
+    "Vibration-based condition monitoring for rotating machinery": "Schwingungsbasierte Zustandsüberwachung rotierender Maschinen",
     "Envelope analysis": "Hüllkurvenanalyse",
-    "Hilbert transform": "Hilbert-Transformation",
-    "Physics-based bearing diagnostics: band-pass filtering, envelope spectrum and kinematic defect frequencies, checked against public bearing test data.": "Physikbasierte Wälzlagerdiagnose mit Bandpassfilter, Hüllkurvenspektrum und kinematischen Schadensfrequenzen, geprüft an öffentlichen Lagerprüfdaten.",
-    "Early bearing damage hides below the normal vibration spectrum.": "Beginnende Lagerschäden gehen im normalen Schwingungsspektrum unter.",
-    "Wrote the processing chain in Python and compared it with data-driven approaches.": "Die Auswertekette in Python programmiert und mit datengetriebenen Ansätzen verglichen.",
-    "Defect frequencies traced to a physical cause, not just an alarm that something changed.": "Schadensfrequenzen werden einer physikalischen Ursache zugeordnet, statt nur zu melden, dass sich etwas verändert hat.",
+    "Gear mesh &amp; sidebands": "Zahneingriff &amp; Seitenbänder",
+    "Web app": "Web-App",
+    "An independent product I am developing, building on my master's thesis: a web-based tool that turns vibration measurements from spindles, toolholders, bearings and gears into a clear health status for each component. Details on request.": "Eine eigenständige Produktentwicklung, aufbauend auf meiner Masterarbeit: ein webbasiertes Werkzeug, das Schwingungsmessungen an Spindeln, Werkzeughaltern, Wälzlagern und Verzahnungen in eine klare Zustandsbewertung je Bauteil übersetzt. Details auf Anfrage.",
+    "Vibration data gets recorded, but rarely turned into a decision a maintenance team can act on.": "Schwingungsdaten werden erfasst, aber selten in eine Entscheidung übersetzt, nach der die Instandhaltung handeln kann.",
+    "Designed the signal-processing chain: FFT and PSD, band-pass filtering, Hilbert envelope, bearing and gear fault frequencies, and an automatic report that flags each component.": "Die Signalverarbeitungskette entworfen: FFT und PSD, Bandpassfilter, Hilbert-Hüllkurve, Schadensfrequenzen von Lagern und Verzahnungen sowie ein automatischer Bericht, der jedes Bauteil bewertet.",
+    "Faults traced to a physical cause per component, validated on public bearing-fault datasets and real test-bench measurements.": "Schäden werden je Bauteil einer physikalischen Ursache zugeordnet, validiert an öffentlichen Lagerschadensdaten und realen Prüfstandsmessungen.",
+    "Envelope spectrum of a spindle bearing pair, with BPFO, BPFI, BSF and FTF markers": "Hüllkurvenspektrum eines Spindellagerpaars mit Markierungen für BPFO, BPFI, BSF und FTF",
+    "Automatic report from a 5000 rpm test: each bearing and gear stage flagged OK or FAULT": "Automatischer Bericht aus einem Versuch bei 5000 1/min: jedes Lager und jede Getriebestufe als OK oder FEHLER bewertet",
 
     "Technical writing for engineers and the people who work with them.": "Fachartikel für Ingenieure und alle, die mit ihnen arbeiten. Die Artikel sind auf Englisch.",
     "Why lapping is specified for noise but also improves function, catches manufacturing deviations before assembly and protects operators from noise exposure.": "Warum Läppen wegen des Geräuschs vorgeschrieben wird, aber auch die Funktion verbessert, Fertigungsabweichungen vor der Montage aufdeckt und Mitarbeitende vor Lärm schützt.",
