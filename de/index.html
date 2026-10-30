@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mustapha Olunrebi | Mechanical Engineer</title>
+<meta name="description" content="Mechanical engineer (M.Eng.) in Bremen. Design, FEM, fatigue and vibration testing. Projects, articles and interactive tools.">
+<meta name="author" content="Mustapha Olunrebi">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mustapha Olunrebi | Mechanical Engineer">
+<meta property="og:description" content="Design, FEM, fatigue and vibration testing. Projects, articles and interactive tools.">
+<meta property="og:url" content="https://simbad001.github.io/mustapha_olunrebi/de/">
+<meta property="og:image" content="https://simbad001.github.io/mustapha_olunrebi/images/listening-to-gears.jpg">
+<style>
+  :root {
+    --bg:#f6f5f1; --card:#ffffff; --ink:#1c2128; --muted:#5d6670; --line:#e2e0d8;
+    --accent:#1f4e79; --accent-2:#2a7a62; --tag:#eef2f6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#14171b; --card:#1d2127; --ink:#e8eaed; --muted:#a2aab3; --line:#2e333b;
+      --accent:#7fb2e5; --accent-2:#6cc6a6; --tag:#262c34; }
+  }
+  * { box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif; line-height:1.55; }
+  a { color:var(--accent); }
+  .wrap { max-width:1060px; margin:0 auto; padding:0 20px; }
+
+  nav { position:sticky; top:0; z-index:10; background:color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  nav .wrap { display:flex; align-items:center; justify-content:space-between; height:58px; gap:16px; }
+  .logo { font-weight:700; text-decoration:none; color:var(--ink); letter-spacing:.2px; white-space:nowrap; }
+  .logo span { color:var(--accent); }
+  nav ul { list-style:none; display:flex; gap:22px; margin:0; padding:0; }
+  nav ul a { text-decoration:none; color:var(--muted); font-size:15px; }
+  nav ul a:hover { color:var(--ink); }
+  @media (max-width:760px){ nav ul { display:none; } }
+  .navr { display:flex; align-items:center; gap:22px; }
+  .lang { display:flex; border:1px solid var(--line); border-radius:7px; overflow:hidden; }
+  .lang button { border:0; background:transparent; color:var(--muted); font:inherit; font-size:13px; font-weight:600; padding:5px 10px; cursor:pointer; }
+  .lang button[aria-pressed="true"] { background:var(--accent); color:#fff; }
+  @media (prefers-color-scheme: dark){ .lang button[aria-pressed="true"] { color:#0f1a26; } }
+
+  .hero { padding:72px 0 56px; }
+  .hero .intro { display:grid; grid-template-columns: 1fr 230px; gap:48px; align-items:center; }
+  .eyebrow { color:var(--accent-2); font-weight:600; letter-spacing:.6px; text-transform:uppercase; font-size:13px; margin:0 0 10px; }
+  h1 { font-size:clamp(34px, 5vw, 52px); line-height:1.08; margin:0 0 18px; }
+  .lead { font-size:18px; color:var(--muted); max-width:620px; margin:0 0 28px; }
+  .btns { display:flex; gap:12px; flex-wrap:wrap; }
+  .btn { display:inline-block; padding:11px 20px; border-radius:8px; text-decoration:none; font-weight:600; font-size:15px; }
+  .btn.primary { background:var(--accent); color:#fff; }
+  @media (prefers-color-scheme: dark){ .btn.primary { color:#0f1a26; } }
+  .btn.ghost { border:1px solid var(--line); color:var(--ink); background:var(--card); }
+  .photo { width:230px; height:280px; object-fit:cover; object-position:50% 20%; border-radius:14px; border:1px solid var(--line); }
+  @media (max-width:760px){ .hero .intro { grid-template-columns:1fr; } .photo { width:150px; height:180px; order:-1; } .hero { padding-top:40px; } }
+
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:44px; }
+  .stat { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px 18px; }
+  .stat b { display:block; font-size:26px; color:var(--accent); }
+  .stat span { color:var(--muted); font-size:14px; }
+  @media (max-width:760px){ .stats { grid-template-columns:1fr 1fr; } }
+
+  section { padding:56px 0; border-top:1px solid var(--line); }
+  h2 { font-size:28px; margin:0 0 8px; }
+  .sub { color:var(--muted); margin:0 0 30px; max-width:680px; }
+
+  .projects { display:grid; gap:22px; }
+  .project { display:grid; grid-template-columns: 300px 1fr; background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden; }
+  .project .img { position:relative; overflow:hidden; background:#fff; display:flex; align-items:center; justify-content:center; min-height:220px; }
+  .project .img img { width:100%; height:100%; max-height:320px; object-fit:cover; }
+  .project .img.tall { min-height:280px; }
+  @media (max-width:820px){ .project .img.tall { min-height:300px; } }
+  .project .img img.contain { object-fit:contain; padding:10px; }
+  .gallery { grid-column:1 / -1; display:grid; grid-template-columns:1fr 3fr; gap:14px; padding:0 26px 24px; }
+  .gallery figure { margin:0; }
+  .gallery img { width:100%; height:240px; object-fit:cover; border-radius:8px; border:1px solid var(--line); background:#fff; display:block; }
+  .gallery .wide img { object-fit:contain; }
+  .gallery figcaption { font-size:13px; color:var(--muted); margin-top:6px; }
+  @media (max-width:820px){ .gallery { grid-template-columns:1fr; padding:0 18px 20px; } .gallery img { height:auto; max-height:320px; } }
+  .project .img.art { background:linear-gradient(135deg,#1f4e79,#2a7a62); color:#fff; }
+  .project .body { padding:24px 26px; }
+  .cat { font-size:12px; text-transform:uppercase; letter-spacing:.6px; color:var(--accent-2); font-weight:700; }
+  .project h3 { margin:4px 0 10px; font-size:21px; line-height:1.25; }
+  .tags { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 14px; padding:0; list-style:none; }
+  .tags li { background:var(--tag); border-radius:20px; padding:3px 10px; font-size:13px; color:var(--muted); }
+  .pwm { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:12px; }
+  .pwm h4 { margin:0 0 4px; font-size:13px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); }
+  .pwm p { margin:0; font-size:14.5px; }
+  .links { margin-top:16px; display:flex; gap:16px; flex-wrap:wrap; font-weight:600; font-size:15px; }
+  @media (max-width:820px){ .project { grid-template-columns:1fr; } .project .img { min-height:200px; } .pwm { grid-template-columns:1fr; } }
+
+  .articles { display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+  .article { background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden; text-decoration:none; color:var(--ink); display:flex; flex-direction:column; }
+  .article img { width:100%; aspect-ratio:1.91/1; object-fit:cover; }
+  .article div { padding:18px 20px 22px; }
+  .article h3 { margin:0 0 6px; font-size:19px; }
+  .article p { margin:0; color:var(--muted); font-size:15px; }
+  .article:hover h3 { color:var(--accent); }
+  .articles.three { grid-template-columns:repeat(3,1fr); }
+  .articles.three img { aspect-ratio:16/10; }
+  @media (max-width:900px){ .articles.three { grid-template-columns:1fr 1fr; } }
+  @media (max-width:760px){ .articles, .articles.three { grid-template-columns:1fr; } }
+
+  .timeline { display:grid; gap:18px; }
+  .job { display:grid; grid-template-columns:170px 1fr; gap:20px; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:20px 22px; }
+  .job .when { color:var(--muted); font-size:14px; }
+  .job h3 { margin:0; font-size:18px; }
+  .job .org { color:var(--muted); margin:2px 0 8px; }
+  .job ul { margin:0; padding-left:18px; }
+  .job li { margin:3px 0; font-size:15px; }
+  @media (max-width:640px){ .job { grid-template-columns:1fr; gap:6px; } }
+
+  .skills { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+  .skill { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px 20px; }
+  .skill h3 { margin:0 0 8px; font-size:16px; color:var(--accent); }
+  .skill p { margin:0; font-size:15px; color:var(--muted); }
+  @media (max-width:760px){ .skills { grid-template-columns:1fr; } }
+  .certh { margin:34px 0 14px; font-size:20px; }
+  .certs { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  .certs li { background:var(--card); border:1px solid var(--line); border-left:3px solid var(--accent-2); border-radius:10px; padding:12px 16px; }
+  .certs b { display:block; font-size:15px; }
+  .certs span { color:var(--muted); font-size:14px; }
+  @media (max-width:760px){ .certs { grid-template-columns:1fr; } }
+
+  .contact { text-align:center; }
+  .contact .btns { justify-content:center; }
+  footer { padding:26px 0 40px; color:var(--muted); font-size:14px; text-align:center; }
+</style>
+</head>
+<body id="top">
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">Mustapha <span>Olunrebi</span></a>
+    <div class="navr">
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#articles">Articles</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+        <button type="button" data-lang="de" aria-pressed="true">DE</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap intro">
+    <div>
+      <p class="eyebrow">Mechanical Engineer · M.Eng. · Bremen, Germany</p>
+      <h1>I design, test and analyse mechanical systems.</h1>
+      <p class="lead">From roller brake test rigs in Nigeria to vibration-based lifetime estimation of CNC toolholders in Germany. Design, FEM, fatigue and measurement, with the data to back up each decision.</p>
+      <div class="btns">
+        <a class="btn primary" href="#projects">See my projects</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <img class="photo" src="../images/photo.png" alt="Mustapha Olunrebi">
+  </div>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>4 yrs</b><span>designing and commissioning test rigs</span></div>
+      <div class="stat"><b>M.Eng.</b><span>Hochschule Esslingen, Design &amp; Development</span></div>
+      <div class="stat"><b>77/77</b><span>failure-analysis checks matched in fasolver</span></div>
+      <div class="stat"><b>7</b><span>gear types in my interactive mesh simulator</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Featured projects</h2>
+    <p class="sub">Each project shows the problem, what I did and what came out of it.</p>
+
+    <div class="projects">
+
+      <article class="project">
+        <div class="img"><img class="contain" src="../images/thesis-test-stand.jpg" alt="Toolholder test stand used in the thesis"></div>
+        <div class="body">
+          <div class="cat">Master's thesis · Vibration &amp; reliability</div>
+          <h3>Vibration-based lifetime estimation of CNC toolholders</h3>
+          <ul class="tags"><li>PSD</li><li>Dirlik method</li><li>NI-DAQ</li><li>LabVIEW</li><li>Python</li><li>3-axis accelerometers</li></ul>
+          <p>Thesis at ESA Eppinger GmbH, a toolholder manufacturer near Stuttgart. I estimated toolholder fatigue life from measured vibration in the frequency domain.</p>
+          <div class="pwm">
+            <div><h4>Problem</h4><p>Acoustic end-of-line checks catch defects late and say nothing about remaining life.</p></div>
+            <div><h4>What I did</h4><p>Designed and built the test setup, recorded 3-axis vibration under operating conditions, and built the PSD-to-damage workflow.</p></div>
+            <div><h4>Result</h4><p>Anomalies and defects were detected more reliably than with conventional acoustic testing.</p></div>
+          </div>
+        </div>
+        <div class="gallery">
+          <figure><img src="../images/thesis-sensor-setup.jpg" alt="Three-axis accelerometers mounted on a toolholder"><figcaption>3-axis accelerometers mounted on the toolholder housing</figcaption></figure>
+          <figure class="wide"><a href="../images/thesis-labview.jpg" target="_blank" rel="noopener"><img src="../images/thesis-labview.jpg" alt="LabVIEW block diagram for FFT analysis"></a><figcaption>My LabVIEW program: FFT of three channels against a reference measurement, with low-, band- and high-pass filtering</figcaption></figure>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="img art">
+          <svg width="150" height="110" viewBox="0 0 150 110" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+            <rect x="8" y="70" width="134" height="18" rx="3"/>
+            <circle cx="45" cy="62" r="16"/><circle cx="105" cy="62" r="16"/>
+            <circle cx="45" cy="62" r="4" fill="currentColor"/><circle cx="105" cy="62" r="4" fill="currentColor"/>
+            <path d="M20 30h40l10 -12h30" /><circle cx="110" cy="18" r="6"/>
+            <path d="M20 30v20M130 40v22"/>
+          </svg>
+        </div>
+        <div class="body">
+          <div class="cat">Industry · Test rig design &amp; commissioning</div>
+          <h3>Roller brake test rigs for vehicle inspection centres</h3>
+          <ul class="tags"><li>Autodesk Inventor</li><li>Sensors &amp; actuators</li><li>Calibration</li><li>Root-cause analysis</li></ul>
+          <p>Four years at LACVIS Nigeria, which runs computerised vehicle inspection centres in Lagos.</p>
+          <div class="pwm">
+            <div><h4>Problem</h4><p>Inspection results stand or fall with test rigs that measure accurately and keep running under heavy daily use.</p></div>
+            <div><h4>What I did</h4><p>Designed rig components in 3D CAD, selected sensors, actuators and measurement hardware, commissioned and calibrated rigs on site.</p></div>
+            <div><h4>Result</h4><p>Higher rig availability through measurement-based fault finding and design improvements.</p></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="img"><img src="../images/simulator.png" alt="Gear Mesh Simulator screenshot" style="object-position:0 50%"></div>
+        <div class="body">
+          <div class="cat">Interactive tool · Gears &amp; NVH</div>
+          <h3>Gear Mesh Simulator</h3>
+          <ul class="tags"><li>Spur &amp; helical</li><li>Bevel &amp; hypoid</li><li>Worm</li><li>Planetary</li><li>Mesh frequency</li></ul>
+          <p>A browser tool that animates a gear pair with adjustable tooth counts, speed and tooth errors, and lets you see and hear the difference between unlapped and lapped gears.</p>
+          <div class="pwm">
+            <div><h4>Problem</h4><p>Gear noise is easy to measure and hard to explain to non-specialists.</p></div>
+            <div><h4>What I did</h4><p>Built an interactive model with seven gear types, 2D and 3D views, transmission error and an audio preview of the mesh whine.</p></div>
+            <div><h4>Result</h4><p>A teaching and troubleshooting aid that runs in any browser, no install.</p></div>
+          </div>
+          <div class="links"><a href="https://simbad001.github.io/gear-lapping/simulator/">Try the simulator →</a></div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="img art">
+          <svg width="160" height="110" viewBox="0 0 160 110" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+            <path d="M10 15v85h140"/>
+            <path d="M14 22 C40 26, 55 50, 80 62 S125 80, 146 84"/>
+            <path d="M14 40 C40 44, 60 64, 90 74 S130 88, 146 92" stroke-dasharray="5 5"/>
+            <circle cx="80" cy="62" r="5" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="body">
+          <div class="cat">Software · Fatigue &amp; failure analysis</div>
+          <h3>fasolver: a Python failure-analysis toolkit</h3>
+          <ul class="tags"><li>Python</li><li>Fatigue &amp; fracture</li><li>Crack growth</li><li>Buckling</li><li>40 automated tests</li></ul>
+          <p>A toolkit that ranks likely failure mechanisms from observations and then runs the strength, fracture and crack-growth checks that confirm or rule them out.</p>
+          <div class="pwm">
+            <div><h4>Problem</h4><p>Failure investigations often jump to a cause before the numbers are checked.</p></div>
+            <div><h4>What I did</h4><p>Wrote 18 mechanism cards and the matching calculations, then re-solved twelve documented failures from 1943 to 2018.</p></div>
+            <div><h4>Result</h4><p>77 of 77 checks agree with the published values. Every formula is covered by a test.</p></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="img"><img class="contain" src="../images/physics-vs-ai.png" alt="Physics versus AI in machine troubleshooting" style="background:#f6f5f1"></div>
+        <div class="body">
+          <div class="cat">Condition monitoring · Signal processing</div>
+          <h3>Bearing fault diagnostics from vibration</h3>
+          <ul class="tags"><li>FFT</li><li>Envelope analysis</li><li>Hilbert transform</li><li>BPFO / BPFI / BSF</li><li>Python</li></ul>
+          <p>Physics-based bearing diagnostics: band-pass filtering, envelope spectrum and kinematic defect frequencies, checked against public bearing test data.</p>
+          <div class="pwm">
+            <div><h4>Problem</h4><p>Early bearing damage hides below the normal vibration spectrum.</p></div>
+            <div><h4>What I did</h4><p>Wrote the processing chain in Python and compared it with data-driven approaches.</p></div>
+            <div><h4>Result</h4><p>Defect frequencies traced to a physical cause, not just an alarm that something changed.</p></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="articles">
+  <div class="wrap">
+    <h2>Articles</h2>
+    <p class="sub">Technical writing for engineers and the people who work with them.</p>
+    <div class="articles">
+      <a class="article" href="https://simbad001.github.io/gear-lapping/">
+        <img src="../images/gear-lapping.jpg" alt="Gear lapping machine">
+        <div><h3>Gear Lapping: More Than Noise</h3><p>Why lapping is specified for noise but also improves function, catches manufacturing deviations before assembly and protects operators from noise exposure.</p></div>
+      </a>
+      <a class="article" href="https://simbad001.github.io/gear-lapping/listening-to-gears/">
+        <img src="../images/listening-to-gears.jpg" alt="Gear mesh close-up">
+        <div><h3>Listening to Gears: The Physics of the Gear Mesh</h3><p>Transmission error, gear-mesh frequency, sidebands and contact overlap. How to read what a gear pair is telling you, and why the precision behind it matters.</p></div>
+      </a>
+    </div>
+
+    <h3 class="certh">Presentations &amp; posters</h3>
+    <p class="sub">Shared as documents on LinkedIn. Click to open the PDF.</p>
+    <div class="articles three">
+      <a class="article" href="../docs/structural-health-monitoring.pdf" target="_blank" rel="noopener">
+        <img src="../images/doc-structural-health-monitoring.jpg" alt="Structural Health Monitoring title slide">
+        <div><h3>Structural Health Monitoring</h3><p>Vibration-based fault detection, data acquisition, a LabVIEW analysis, a CNC toolholder case and wind turbine monitoring. 18 slides.</p></div>
+      </a>
+      <a class="article" href="../docs/gears-power-behind-precision.pdf" target="_blank" rel="noopener">
+        <img src="../images/doc-gears-power-behind-precision.jpg" alt="Gears: The Power Behind Precision title slide">
+        <div><h3>Gears: The Power Behind Precision</h3><p>Gear types, design, manufacturing and applications, from watches to wind turbines. 14 slides.</p></div>
+      </a>
+      <a class="article" href="../docs/precision-machining-fatigue.pdf" target="_blank" rel="noopener">
+        <img src="../images/doc-precision-machining-fatigue.jpg" alt="Why Precision and Machining Matter in Design poster" style="object-position:50% 0">
+        <div><h3>Why Precision &amp; Machining Matter in Design</h3><p>Surface finish and fatigue, basic fatigue parameters and a comparison of manufacturing processes by precision, cost and fatigue impact. One-page poster.</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <h2>Experience</h2>
+    <p class="sub">Newest first.</p>
+    <div class="timeline">
+      <div class="job">
+        <div class="when">05/2024 – present<br>Remote</div>
+        <div><h3>Project Engineer</h3><div class="org">Omnidata Global Services Limited</div>
+          <ul>
+            <li>Design reviews and optimisation of mechanical systems, including design for manufacturing</li>
+            <li>FEM strength assessments under static and dynamic loads (ANSYS Workbench)</li>
+            <li>Technical specifications, documentation and task tracking in SAP and MS Project</li>
+          </ul></div>
+      </div>
+      <div class="job">
+        <div class="when">06/2023 – 02/2024<br>Denkendorf, Germany</div>
+        <div><h3>R&amp;D Test &amp; Automation (Master's thesis)</h3><div class="org">ESA Eppinger GmbH</div>
+          <ul>
+            <li>Designed and built test setups for rotating toolholder systems</li>
+            <li>Frequency-domain fatigue life estimation (PSD, Dirlik)</li>
+            <li>Data acquisition and signal analysis with NI-DAQ, LabVIEW and Python</li>
+          </ul></div>
+      </div>
+      <div class="job">
+        <div class="when">04/2018 – 01/2022<br>Lagos, Nigeria</div>
+        <div><h3>Design &amp; Development Engineer</h3><div class="org">LACVIS Nigeria Limited</div>
+          <ul>
+            <li>Design and validation of vehicle test and diagnostic rigs in 3D CAD</li>
+            <li>Selection and integration of sensors, actuators and measurement systems</li>
+            <li>Commissioning, calibration and root-cause analysis on rigs in operation</li>
+          </ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <h2>Skills &amp; education</h2>
+    <p class="sub">&nbsp;</p>
+    <div class="skills">
+      <div class="skill"><h3>Design</h3><p>Creo Parametric, Autodesk Inventor, FreeCAD, technical drawings, GD&amp;T (ASME Y14.5), design for manufacturing</p></div>
+      <div class="skill"><h3>Analysis</h3><p>ANSYS Workbench (static, modal, fatigue), FEM, fatigue and fracture, vibration and NVH</p></div>
+      <div class="skill"><h3>Test &amp; measurement</h3><p>Test rig design, commissioning, calibration, NI-DAQ, LabVIEW, accelerometers, signal processing</p></div>
+      <div class="skill"><h3>Software &amp; tools</h3><p>Python, SAP, Windchill PLM, MS Project, MS Office</p></div>
+      <div class="skill"><h3>Education</h3><p>M.Eng. Design and Development in Automotive and Mechanical Engineering, Hochschule Esslingen (2024)</p></div>
+      <div class="skill"><h3>Languages</h3><p>English C1, German B2</p></div>
+    </div>
+
+    <h3 class="certh">Certificates</h3>
+    <ul class="certs">
+      <li><b>Machining AdvantEdge: Advanced Analyses</b><span>Third Wave Systems · Learning path · 2026</span></li>
+      <li><b>Machining AdvantEdge: Machining Modeling</b><span>Third Wave Systems · Learning path · 2025</span></li>
+      <li><b>Introduction to Composites Online</b><span>IACMI – The Composites Institute · 2025 · <a href="https://www.credly.com/go/7Ik8vRY1">Verify on Credly</a></span></li>
+      <li><b>Structural Integrity of Offshore Wind Turbine Foundations</b><span>2025</span></li>
+      <li><b>GD&amp;T &amp; Tolerance Stack-Up (ASME Y14.5)</b><span>2025</span></li>
+      <li><b>Learning SCADA: Collect, Analyze, and Visualize Data for Industrial Automation</b><span>LinkedIn Learning · 2025</span></li>
+      <li><b>Getting Started as a Technical Project Manager</b><span>LinkedIn Learning</span></li>
+      <li><b>Artificial Intelligence Foundations: Machine Learning</b><span>LinkedIn Learning · 2025</span></li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Let's talk</h2>
+    <p class="sub" style="margin-left:auto;margin-right:auto">Open to design, test and analysis engineering roles in Germany.</p>
+    <div class="btns">
+      <a class="btn primary" href="mailto:olunrebim@gmail.com">olunrebim@gmail.com</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/mustapha-olunrebi-b98289125">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Mustapha Olunrebi · Bremen, Germany</footer>
+
+<script>
+(function () {
+  var DE = {
+    "Projects": "Projekte",
+    "Articles": "Artikel",
+    "Experience": "Berufserfahrung",
+    "Skills": "Kenntnisse",
+    "Contact": "Kontakt",
+    "Mechanical Engineer · M.Eng. · Bremen, Germany": "Maschinenbauingenieur · M.Eng. · Bremen",
+    "I design, test and analyse mechanical systems.": "Ich konstruiere, prüfe und berechne mechanische Systeme.",
+    "From roller brake test rigs in Nigeria to vibration-based lifetime estimation of CNC toolholders in Germany. Design, FEM, fatigue and measurement, with the data to back up each decision.": "Von Rollenbremsprüfständen in Nigeria bis zur schwingungsbasierten Lebensdauerabschätzung von CNC-Werkzeughaltern in Deutschland. Konstruktion, FEM, Betriebsfestigkeit und Messtechnik, mit Daten hinter jeder Entscheidung.",
+    "See my projects": "Zu meinen Projekten",
+    "Get in touch": "Kontakt aufnehmen",
+    "4 yrs": "4 Jahre",
+    "designing and commissioning test rigs": "Konstruktion und Inbetriebnahme von Prüfständen",
+    "Hochschule Esslingen, Design &amp; Development": "Hochschule Esslingen, Design &amp; Development",
+    "failure-analysis checks matched in fasolver": "Nachweise in fasolver bestätigt",
+    "gear types in my interactive mesh simulator": "Verzahnungsarten in meinem interaktiven Simulator",
+    "Featured projects": "Ausgewählte Projekte",
+    "Each project shows the problem, what I did and what came out of it.": "Zu jedem Projekt: die Aufgabe, mein Beitrag und das Ergebnis.",
+    "Problem": "Aufgabe",
+    "What I did": "Mein Beitrag",
+    "Result": "Ergebnis",
+
+    "Master's thesis · Vibration &amp; reliability": "Masterarbeit · Schwingungen &amp; Zuverlässigkeit",
+    "Vibration-based lifetime estimation of CNC toolholders": "Schwingungsbasierte Lebensdauerabschätzung von CNC-Werkzeughaltern",
+    "Dirlik method": "Dirlik-Methode",
+    "3-axis accelerometers": "3-Achs-Beschleunigungssensoren",
+    "Thesis at ESA Eppinger GmbH, a toolholder manufacturer near Stuttgart. I estimated toolholder fatigue life from measured vibration in the frequency domain.": "Masterarbeit bei der ESA Eppinger GmbH, einem Werkzeughalterhersteller bei Stuttgart. Ich habe die Lebensdauer von Werkzeughaltern aus gemessenen Schwingungen im Frequenzbereich abgeschätzt.",
+    "Acoustic end-of-line checks catch defects late and say nothing about remaining life.": "Akustische Endprüfungen erkennen Fehler spät und sagen nichts über die Restlebensdauer aus.",
+    "Designed and built the test setup, recorded 3-axis vibration under operating conditions, and built the PSD-to-damage workflow.": "Prüfaufbau konstruiert und aufgebaut, Schwingungen in drei Achsen unter Betriebsbedingungen gemessen und den Ablauf von der PSD bis zur Schädigung umgesetzt.",
+    "3-axis accelerometers mounted on the toolholder housing": "3-Achs-Beschleunigungssensoren am Werkzeughaltergehäuse",
+    "My LabVIEW program: FFT of three channels against a reference measurement, with low-, band- and high-pass filtering": "Mein LabVIEW-Programm: FFT von drei Kanälen gegen eine Referenzmessung, mit Tief-, Band- und Hochpassfilterung",
+    "Anomalies and defects were detected more reliably than with conventional acoustic testing.":"Anomalien und Defekte wurden zuverlässiger erkannt als mit der herkömmlichen akustischen Prüfung.",
+
+    "Industry · Test rig design &amp; commissioning": "Industrie · Prüfstandsbau &amp; Inbetriebnahme",
+    "Roller brake test rigs for vehicle inspection centres": "Rollenbremsprüfstände für Fahrzeugprüfstellen",
+    "Sensors &amp; actuators": "Sensorik &amp; Aktorik",
+    "Calibration": "Kalibrierung",
+    "Root-cause analysis": "Ursachenanalyse",
+    "Four years at LACVIS Nigeria, which runs computerised vehicle inspection centres in Lagos.": "Vier Jahre bei LACVIS Nigeria, dem Betreiber computergestützter Fahrzeugprüfstellen in Lagos.",
+    "Inspection results stand or fall with test rigs that measure accurately and keep running under heavy daily use.": "Prüfergebnisse hängen an Prüfständen, die genau messen und im harten Tagesbetrieb zuverlässig laufen.",
+    "Designed rig components in 3D CAD, selected sensors, actuators and measurement hardware, commissioned and calibrated rigs on site.": "Komponenten in 3D-CAD konstruiert, Sensoren, Aktoren und Messtechnik ausgewählt, Prüfstände vor Ort in Betrieb genommen und kalibriert.",
+    "Higher rig availability through measurement-based fault finding and design improvements.": "Höhere Verfügbarkeit der Prüfstände durch messdatengestützte Fehlersuche und konstruktive Verbesserungen.",
+
+    "Interactive tool · Gears &amp; NVH": "Interaktives Tool · Verzahnung &amp; NVH",
+    "Spur &amp; helical": "Gerad- &amp; Schrägverzahnung",
+    "Bevel &amp; hypoid": "Kegel- &amp; Hypoidräder",
+    "Worm": "Schnecke",
+    "Planetary": "Planetengetriebe",
+    "Mesh frequency": "Zahneingriffsfrequenz",
+    "A browser tool that animates a gear pair with adjustable tooth counts, speed and tooth errors, and lets you see and hear the difference between unlapped and lapped gears.": "Ein Browser-Tool, das eine Radpaarung mit einstellbaren Zähnezahlen, Drehzahlen und Verzahnungsfehlern animiert. Der Unterschied zwischen ungeläppten und geläppten Zahnrädern wird sichtbar und hörbar.",
+    "Gear noise is easy to measure and hard to explain to non-specialists.": "Verzahnungsgeräusche sind leicht zu messen, aber Nicht-Fachleuten schwer zu erklären.",
+    "Built an interactive model with seven gear types, 2D and 3D views, transmission error and an audio preview of the mesh whine.": "Interaktives Modell mit sieben Verzahnungsarten, 2D- und 3D-Ansicht, Drehwegabweichung und hörbarem Verzahnungsheulen entwickelt.",
+    "A teaching and troubleshooting aid that runs in any browser, no install.": "Eine Hilfe für Schulung und Fehlersuche, die in jedem Browser ohne Installation läuft.",
+    "Try the simulator →": "Simulator ausprobieren →",
+
+    "Software · Fatigue &amp; failure analysis": "Software · Betriebsfestigkeit &amp; Schadensanalyse",
+    "fasolver: a Python failure-analysis toolkit": "fasolver: ein Python-Werkzeug für die Schadensanalyse",
+    "Fatigue &amp; fracture": "Ermüdung &amp; Bruch",
+    "Crack growth": "Risswachstum",
+    "Buckling": "Knicken &amp; Beulen",
+    "40 automated tests": "40 automatisierte Tests",
+    "A toolkit that ranks likely failure mechanisms from observations and then runs the strength, fracture and crack-growth checks that confirm or rule them out.": "Ein Werkzeug, das aus Befunden die wahrscheinlichen Schadensmechanismen ableitet und anschließend die Festigkeits-, Bruch- und Risswachstumsnachweise rechnet, die sie bestätigen oder ausschließen.",
+    "Failure investigations often jump to a cause before the numbers are checked.": "Schadensuntersuchungen legen sich oft auf eine Ursache fest, bevor nachgerechnet wurde.",
+    "Wrote 18 mechanism cards and the matching calculations, then re-solved twelve documented failures from 1943 to 2018.": "18 Schadensmechanismen mit den passenden Berechnungen umgesetzt und zwölf dokumentierte Schadensfälle von 1943 bis 2018 nachgerechnet.",
+    "77 of 77 checks agree with the published values. Every formula is covered by a test.": "77 von 77 Nachweisen stimmen mit den veröffentlichten Werten überein. Jede Formel ist durch einen Test abgesichert.",
+
+    "Condition monitoring · Signal processing": "Zustandsüberwachung · Signalverarbeitung",
+    "Bearing fault diagnostics from vibration": "Wälzlagerdiagnose aus Schwingungsdaten",
+    "Envelope analysis": "Hüllkurvenanalyse",
+    "Hilbert transform": "Hilbert-Transformation",
+    "Physics-based bearing diagnostics: band-pass filtering, envelope spectrum and kinematic defect frequencies, checked against public bearing test data.": "Physikbasierte Wälzlagerdiagnose mit Bandpassfilter, Hüllkurvenspektrum und kinematischen Schadensfrequenzen, geprüft an öffentlichen Lagerprüfdaten.",
+    "Early bearing damage hides below the normal vibration spectrum.": "Beginnende Lagerschäden gehen im normalen Schwingungsspektrum unter.",
+    "Wrote the processing chain in Python and compared it with data-driven approaches.": "Die Auswertekette in Python programmiert und mit datengetriebenen Ansätzen verglichen.",
+    "Defect frequencies traced to a physical cause, not just an alarm that something changed.": "Schadensfrequenzen werden einer physikalischen Ursache zugeordnet, statt nur zu melden, dass sich etwas verändert hat.",
+
+    "Technical writing for engineers and the people who work with them.": "Fachartikel für Ingenieure und alle, die mit ihnen arbeiten. Die Artikel sind auf Englisch.",
+    "Why lapping is specified for noise but also improves function, catches manufacturing deviations before assembly and protects operators from noise exposure.": "Warum Läppen wegen des Geräuschs vorgeschrieben wird, aber auch die Funktion verbessert, Fertigungsabweichungen vor der Montage aufdeckt und Mitarbeitende vor Lärm schützt.",
+    "Transmission error, gear-mesh frequency, sidebands and contact overlap. How to read what a gear pair is telling you, and why the precision behind it matters.": "Drehwegabweichung, Zahneingriffsfrequenz, Seitenbänder und Überdeckung. Wie man liest, was eine Radpaarung verrät, und warum die Präzision dahinter zählt.",
+
+    "Presentations &amp; posters": "Präsentationen &amp; Poster",
+    "Shared as documents on LinkedIn. Click to open the PDF.": "Auf LinkedIn als Dokumente veröffentlicht, auf Englisch. Klicken öffnet das PDF.",
+    "Vibration-based fault detection, data acquisition, a LabVIEW analysis, a CNC toolholder case and wind turbine monitoring. 18 slides.": "Schwingungsbasierte Fehlererkennung, Messdatenerfassung, eine LabVIEW-Auswertung, ein Fallbeispiel CNC-Werkzeughalter und die Überwachung von Windenergieanlagen. 18 Folien.",
+    "Gear types, design, manufacturing and applications, from watches to wind turbines. 14 slides.": "Verzahnungsarten, Auslegung, Fertigung und Anwendungen, von der Uhr bis zur Windenergieanlage. 14 Folien.",
+    "Surface finish and fatigue, basic fatigue parameters and a comparison of manufacturing processes by precision, cost and fatigue impact. One-page poster.": "Oberflächengüte und Ermüdung, Grundgrößen der Betriebsfestigkeit und ein Vergleich von Fertigungsverfahren nach Genauigkeit, Kosten und Einfluss auf die Ermüdung. Einseitiges Poster.",
+    "Newest first.": "Aktuellste zuerst.",
+    "05/2024 – present<br>Remote": "05/2024 – heute<br>Remote",
+    "06/2023 – 02/2024<br>Denkendorf, Germany": "06/2023 – 02/2024<br>Denkendorf",
+    "Project Engineer": "Projektingenieur",
+    "Design reviews and optimisation of mechanical systems, including design for manufacturing": "Konstruktive Bewertung und Optimierung mechanischer Systeme, inklusive fertigungsgerechter Gestaltung",
+    "FEM strength assessments under static and dynamic loads (ANSYS Workbench)": "FEM-Festigkeitsnachweise unter statischen und dynamischen Lasten (ANSYS Workbench)",
+    "Technical specifications, documentation and task tracking in SAP and MS Project": "Technische Spezifikationen, Dokumentation und Aufgabenverfolgung in SAP und MS Project",
+    "R&amp;D Test &amp; Automation (Master's thesis)": "F&amp;E Test &amp; Automatisierung (Masterarbeit)",
+    "Designed and built test setups for rotating toolholder systems": "Konzeption und Aufbau von Prüfeinrichtungen für rotierende Werkzeughaltersysteme",
+    "Frequency-domain fatigue life estimation (PSD, Dirlik)": "Lebensdauerabschätzung im Frequenzbereich (PSD, Dirlik)",
+    "Data acquisition and signal analysis with NI-DAQ, LabVIEW and Python": "Messdatenerfassung und Signalanalyse mit NI-DAQ, LabVIEW und Python",
+    "Design &amp; Development Engineer": "Konstruktions- und Entwicklungsingenieur",
+    "Design and validation of vehicle test and diagnostic rigs in 3D CAD": "Konstruktion und Validierung von Fahrzeugprüf- und Diagnoseanlagen in 3D-CAD",
+    "Selection and integration of sensors, actuators and measurement systems": "Auswahl und Integration von Sensoren, Aktoren und Messsystemen",
+    "Commissioning, calibration and root-cause analysis on rigs in operation": "Inbetriebnahme, Kalibrierung und Ursachenanalyse an Anlagen im Betrieb",
+
+    "Skills &amp; education": "Kenntnisse &amp; Ausbildung",
+    "Design": "Konstruktion",
+    "Creo Parametric, Autodesk Inventor, FreeCAD, technical drawings, GD&amp;T (ASME Y14.5), design for manufacturing": "Creo Parametric, Autodesk Inventor, FreeCAD, technische Zeichnungen, GD&amp;T (ASME Y14.5), fertigungsgerechte Konstruktion",
+    "Analysis": "Berechnung",
+    "ANSYS Workbench (static, modal, fatigue), FEM, fatigue and fracture, vibration and NVH": "ANSYS Workbench (statisch, modal, Ermüdung), FEM, Betriebsfestigkeit und Bruchmechanik, Schwingungen und NVH",
+    "Test &amp; measurement": "Mess- &amp; Prüftechnik",
+    "Test rig design, commissioning, calibration, NI-DAQ, LabVIEW, accelerometers, signal processing": "Prüfstandsbau, Inbetriebnahme, Kalibrierung, NI-DAQ, LabVIEW, Beschleunigungssensoren, Signalverarbeitung",
+    "Software &amp; tools": "Software &amp; Tools",
+    "Education": "Ausbildung",
+    "M.Eng. Design and Development in Automotive and Mechanical Engineering, Hochschule Esslingen (2024)": "M.Eng. Design and Development in Automotive and Mechanical Engineering, Hochschule Esslingen (2024)",
+    "Languages": "Sprachen",
+    "English C1, German B2": "Englisch C1, Deutsch B2",
+    "Certificates": "Zertifikate",
+    "Third Wave Systems · Learning path · 2026": "Third Wave Systems · Lernpfad · 2026",
+    "Third Wave Systems · Learning path · 2025": "Third Wave Systems · Lernpfad · 2025",
+    "IACMI – The Composites Institute · 2025 · <a href=\"https://www.credly.com/go/7Ik8vRY1\">Verify on Credly</a>": "IACMI – The Composites Institute · 2025 · <a href=\"https://www.credly.com/go/7Ik8vRY1\">Auf Credly prüfen</a>",
+
+    "Let's talk": "Sprechen wir",
+    "Open to design, test and analysis engineering roles in Germany.": "Offen für Positionen in Konstruktion, Versuch und Berechnung in Deutschland.",
+    "© 2026 Mustapha Olunrebi · Bremen, Germany": "© 2026 Mustapha Olunrebi · Bremen"
+  };
+  var TITLE = { en: document.title, de: "Mustapha Olunrebi | Maschinenbauingenieur" };
+  var norm = function (s) { return s.replace(/\s+/g, " ").trim(); };
+  var nodes = [];
+  document.querySelectorAll("body *:not(script):not(style)").forEach(function (el) {
+    var key = norm(el.innerHTML);
+    if (Object.prototype.hasOwnProperty.call(DE, key)) nodes.push([el, el.innerHTML, DE[key]]);
+  });
+  function setLang(lang) {
+    nodes.forEach(function (n) { n[0].innerHTML = lang === "de" ? n[2] : n[1]; });
+    document.documentElement.lang = lang;
+    document.title = TITLE[lang];
+    document.querySelectorAll(".lang button").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+    });
+  }
+  // English lives at /, German at /de/ (de/index.html is generated by make_de.sh)
+  var IS_DE = /\/de\/(index\.html)?$/.test(location.pathname);
+  var ROOT = location.pathname.replace(IS_DE ? /de\/(index\.html)?$/ : /[^\/]*$/, "");
+  var IDX = location.protocol === "file:" ? "index.html" : "";
+  if (!IS_DE && new URLSearchParams(location.search).get("lang") === "de") {
+    location.replace(ROOT + "de/" + IDX + location.hash);
+    return;
+  }
+  document.querySelectorAll(".lang button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var de = b.dataset.lang === "de";
+      if (de !== IS_DE) location.href = (de ? ROOT + "de/" : ROOT) + IDX + location.hash;
+    });
+  });
+  if (IS_DE) setLang("de");
+})();
+</script>
+
+</body>
+</html>
