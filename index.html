@@ -76,6 +76,14 @@
   .gallery figure { margin:0; }
   .gallery img { width:100%; height:240px; object-fit:cover; border-radius:8px; border:1px solid var(--line); background:#fff; display:block; }
   .gallery .wide img { object-fit:contain; }
+  .gallery .full { grid-column:1 / -1; }
+  .gallery .full img { height:auto; max-height:440px; object-fit:contain; }
+  .thesis-sum { margin-top:18px; border-top:1px solid var(--line); padding-top:12px; }
+  .thesis-sum summary { cursor:pointer; font-weight:600; color:var(--accent); font-size:15px; }
+  .thesis-sum h4 { margin:16px 0 4px; font-size:13px; text-transform:uppercase; letter-spacing:.5px; color:var(--muted); }
+  .thesis-sum p, .thesis-sum li { font-size:14.5px; }
+  .thesis-sum p { margin:0; }
+  .thesis-sum ul { margin:0; padding-left:20px; }
   .gallery.two { grid-template-columns:1fr 1fr; }
   .gallery.two img { height:200px; }
   .gallery figcaption { font-size:13px; color:var(--muted); margin-top:6px; }
@@ -187,17 +195,50 @@
         <div class="body">
           <div class="cat">Master's thesis · Vibration &amp; reliability</div>
           <h3>Vibration-based lifetime estimation of CNC toolholders</h3>
-          <ul class="tags"><li>PSD</li><li>Dirlik method</li><li>NI-DAQ</li><li>LabVIEW</li><li>Python</li><li>3-axis accelerometers</li></ul>
+          <ul class="tags"><li>PSD</li><li>Dirlik method</li><li>NI-DAQ</li><li>LabVIEW</li><li>Python</li><li>3-axis accelerometers</li><li>Failure analysis</li><li>MTBF</li><li>Reliability block diagram</li></ul>
           <p>Thesis at ESA Eppinger GmbH, a toolholder manufacturer near Stuttgart. I estimated toolholder fatigue life from measured vibration in the frequency domain.</p>
           <div class="pwm">
             <div><h4>Problem</h4><p>Acoustic end-of-line checks catch defects late and say nothing about remaining life.</p></div>
             <div><h4>What I did</h4><p>Designed and built the test setup, recorded 3-axis vibration under operating conditions, and built the PSD-to-damage workflow.</p></div>
             <div><h4>Result</h4><p>Anomalies and defects were detected more reliably than with conventional acoustic testing.</p></div>
           </div>
+          <details class="thesis-sum">
+            <summary>Read the full thesis summary</summary>
+            <h4>Background and problem</h4>
+            <p>Every assembled toolholder is checked on a test stand for noise, temperature and coolant leakage at rising speed. The noise meter is disturbed by the machine and the room, and it cannot tell which component is faulty: bearing, gear or seal.</p>
+            <h4>Research questions</h4>
+            <ul>
+              <li>Can faulty components be identified from the test-stand results?</li>
+              <li>Can troubleshooting time be cut during assembly and for customer returns?</li>
+              <li>Can correct assembly be verified?</li>
+              <li>Can the service life be estimated to support warranty and preventive maintenance?</li>
+            </ul>
+            <h4>Method</h4>
+            <ul>
+              <li>Nominal bearing defect and gear-mesh frequencies calculated for each speed in LabVIEW as the reference.</li>
+              <li>3-axis accelerometers and thermocouples on NI CompactDAQ hardware. A ground measurement was subtracted to remove housing and room effects, and a databank of good holders was built up.</li>
+              <li>Anomaly detection in LabVIEW, validated in Python: FFT, PSD, RMS and cumulative RMS, octave bands and spectrogram.</li>
+              <li>Dirlik fatigue model in the frequency domain, coded in Python for 16MnCr5 gear steel.</li>
+              <li>Reliability block diagram (series system) from component MTBF values for seals, bearings, spindle, gears and other parts.</li>
+            </ul>
+            <h4>Results</h4>
+            <ul>
+              <li>Well-assembled holders show the gear-mesh frequency where expected, always in the Y axis. The ground measurement had a negligible effect.</li>
+              <li>A defective holder was traced to bearing and gear peaks at 2000, 3000 and 5000 rpm.</li>
+              <li>Proposed acceptance criteria: no frequency shift above ±50 Hz, and the expected frequencies present in at least two axes.</li>
+              <li>Worst-case reliability (5,000 h) of 0.6 to 0.7 for 6 months, 1 year and 2 years, within the accepted range for new systems.</li>
+              <li>The Dirlik code ran on static test-stand PSDs. Real service-life figures need stress PSDs from operation (planned RFID sensor).</li>
+            </ul>
+            <h4>Failure analysis: pinion broken at 45°</h4>
+            <p>A failed pinion broke at 45°, the plane along which fatigue cracks first grow under shear stress, with secondary damage on the bevel gear teeth. Likely cause: vibration loading combined with too little fatigue analysis in the design. I recommended fatigue analysis in product development, metallographic tests of failed parts, root-cause methods (5 Whys, DMAIC, fishbone), Poka-Yoke and a binding assembly manual for lubrication, tightening torques and sequence.</p>
+            <h4>Outlook</h4>
+            <p>The method is a basis for condition monitoring, also on the customer's machine. I have since developed it further in my own condition-monitoring product.</p>
+          </details>
         </div>
         <div class="gallery">
           <figure><img src="images/thesis-sensor-setup.jpg" alt="Three-axis accelerometers mounted on a toolholder"><figcaption>3-axis accelerometers mounted on the toolholder housing</figcaption></figure>
           <figure class="wide"><a href="images/thesis-labview.jpg" target="_blank" rel="noopener"><img src="images/thesis-labview.jpg" alt="LabVIEW block diagram for FFT analysis"></a><figcaption>My LabVIEW program: FFT of three channels against a reference measurement, with low-, band- and high-pass filtering</figcaption></figure>
+          <figure class="full"><a href="images/thesis-pinion-failure.jpg" target="_blank" rel="noopener"><img src="images/thesis-pinion-failure.jpg" alt="Broken pinion and damaged bevel gear from a CNC toolholder"></a><figcaption>Failure analysis: pinion broken at 45° (primary failure) and damaged bevel gear teeth (secondary failure)</figcaption></figure>
         </div>
       </article>
 
@@ -464,6 +505,33 @@
     "3-axis accelerometers mounted on the toolholder housing": "3-Achs-Beschleunigungssensoren am Werkzeughaltergehäuse",
     "My LabVIEW program: FFT of three channels against a reference measurement, with low-, band- and high-pass filtering": "Mein LabVIEW-Programm: FFT von drei Kanälen gegen eine Referenzmessung, mit Tief-, Band- und Hochpassfilterung",
     "Anomalies and defects were detected more reliably than with conventional acoustic testing.":"Anomalien und Defekte wurden zuverlässiger erkannt als mit der herkömmlichen akustischen Prüfung.",
+    "Failure analysis": "Schadensanalyse",
+    "Reliability block diagram": "Zuverlässigkeits-Blockdiagramm",
+    "Read the full thesis summary": "Zusammenfassung der Masterarbeit lesen",
+    "Background and problem": "Hintergrund und Aufgabe",
+    "Every assembled toolholder is checked on a test stand for noise, temperature and coolant leakage at rising speed. The noise meter is disturbed by the machine and the room, and it cannot tell which component is faulty: bearing, gear or seal.": "Jeder montierte Werkzeughalter wird am Prüfstand bei steigender Drehzahl auf Geräusch, Temperatur und Kühlmittelleckage geprüft. Das Schallpegelmessgerät wird von Maschine und Umgebung gestört und kann nicht zeigen, welches Bauteil defekt ist: Lager, Zahnrad oder Dichtung.",
+    "Research questions": "Forschungsfragen",
+    "Can faulty components be identified from the test-stand results?": "Lassen sich defekte Bauteile aus den Prüfstandsergebnissen erkennen?",
+    "Can troubleshooting time be cut during assembly and for customer returns?": "Lässt sich die Fehlersuche bei der Montage und bei Kundenrückläufern verkürzen?",
+    "Can correct assembly be verified?": "Lässt sich die korrekte Montage nachweisen?",
+    "Can the service life be estimated to support warranty and preventive maintenance?": "Lässt sich die Lebensdauer abschätzen, als Grundlage für Gewährleistung und vorbeugende Instandhaltung?",
+    "Method": "Vorgehen",
+    "Nominal bearing defect and gear-mesh frequencies calculated for each speed in LabVIEW as the reference.": "Lagerschadens- und Zahneingriffsfrequenzen je Drehzahl in LabVIEW als Referenz berechnet.",
+    "3-axis accelerometers and thermocouples on NI CompactDAQ hardware. A ground measurement was subtracted to remove housing and room effects, and a databank of good holders was built up.": "3-Achs-Beschleunigungssensoren und Thermoelemente an NI-CompactDAQ-Messtechnik. Eine Grundmessung wurde abgezogen, um Gehäuse- und Umgebungseinflüsse zu entfernen, und eine Datenbank guter Halter wurde aufgebaut.",
+    "Anomaly detection in LabVIEW, validated in Python: FFT, PSD, RMS and cumulative RMS, octave bands and spectrogram.": "Anomalieerkennung in LabVIEW, validiert in Python: FFT, PSD, RMS und kumulativer RMS, Oktavbänder und Spektrogramm.",
+    "Dirlik fatigue model in the frequency domain, coded in Python for 16MnCr5 gear steel.": "Dirlik-Ermüdungsmodell im Frequenzbereich, in Python für den Einsatzstahl 16MnCr5 programmiert.",
+    "Reliability block diagram (series system) from component MTBF values for seals, bearings, spindle, gears and other parts.": "Zuverlässigkeits-Blockdiagramm (Serienschaltung) aus MTBF-Werten für Dichtungen, Lager, Spindel, Zahnräder und weitere Bauteile.",
+    "Results": "Ergebnisse",
+    "Well-assembled holders show the gear-mesh frequency where expected, always in the Y axis. The ground measurement had a negligible effect.": "Gut montierte Halter zeigen die Zahneingriffsfrequenz an der erwarteten Stelle, in der Y-Achse durchgehend. Die Grundmessung hatte vernachlässigbaren Einfluss.",
+    "A defective holder was traced to bearing and gear peaks at 2000, 3000 and 5000 rpm.": "Ein defekter Halter wurde über Lager- und Zahnradspitzen bei 2000, 3000 und 5000 U/min eingegrenzt.",
+    "Proposed acceptance criteria: no frequency shift above ±50 Hz, and the expected frequencies present in at least two axes.": "Vorgeschlagene Abnahmekriterien: keine Frequenzverschiebung über ±50 Hz, und die erwarteten Frequenzen in mindestens zwei Achsen.",
+    "Worst-case reliability (5,000 h) of 0.6 to 0.7 for 6 months, 1 year and 2 years, within the accepted range for new systems.": "Zuverlässigkeit im ungünstigsten Fall (5.000 h) von 0,6 bis 0,7 für 6 Monate, 1 Jahr und 2 Jahre, im anerkannten Bereich für neue Systeme.",
+    "The Dirlik code ran on static test-stand PSDs. Real service-life figures need stress PSDs from operation (planned RFID sensor).": "Der Dirlik-Code wurde mit statischen Prüfstands-PSDs getestet. Für echte Lebensdauerwerte werden Spannungs-PSDs aus dem Betrieb benötigt (geplanter RFID-Sensor).",
+    "Failure analysis: pinion broken at 45°": "Schadensanalyse: Ritzelbruch unter 45°",
+    "A failed pinion broke at 45°, the plane along which fatigue cracks first grow under shear stress, with secondary damage on the bevel gear teeth. Likely cause: vibration loading combined with too little fatigue analysis in the design. I recommended fatigue analysis in product development, metallographic tests of failed parts, root-cause methods (5 Whys, DMAIC, fishbone), Poka-Yoke and a binding assembly manual for lubrication, tightening torques and sequence.": "Ein ausgefallenes Ritzel brach unter 45°, der Ebene, in der Ermüdungsrisse unter Schubspannung zuerst wachsen, mit Folgeschaden an der Kegelradverzahnung. Wahrscheinliche Ursache: Schwingungsbelastung bei zu wenig Ermüdungsanalyse in der Auslegung. Meine Empfehlungen: Ermüdungsanalyse in der Produktentwicklung, metallografische Untersuchung ausgefallener Teile, Methoden der Ursachenanalyse (5 Why, DMAIC, Ishikawa), Poka-Yoke und ein verbindliches Montagehandbuch für Schmierung, Anzugsmomente und Reihenfolge.",
+    "Outlook": "Ausblick",
+    "The method is a basis for condition monitoring, also on the customer's machine. I have since developed it further in my own condition-monitoring product.": "Die Methode ist eine Grundlage für Zustandsüberwachung, auch an der Maschine des Kunden. Inzwischen habe ich sie in meinem eigenen Condition-Monitoring-Produkt weiterentwickelt.",
+    "Failure analysis: pinion broken at 45° (primary failure) and damaged bevel gear teeth (secondary failure)": "Schadensanalyse: Ritzelbruch unter 45° (Primärschaden) und beschädigte Kegelradverzahnung (Folgeschaden)",
 
     "Industry · Test rig design &amp; commissioning": "Industrie · Prüfstandsbau &amp; Inbetriebnahme",
     "Roller brake test rigs for vehicle inspection centres": "Rollenbremsprüfstände für Fahrzeugprüfstellen",
