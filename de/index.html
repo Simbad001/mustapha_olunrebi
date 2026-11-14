@@ -88,6 +88,11 @@
   .gallery.two img { height:200px; }
   .gallery figcaption { font-size:13px; color:var(--muted); margin-top:6px; }
   @media (max-width:820px){ .gallery { grid-template-columns:1fr; padding:0 18px 20px; } .gallery img { height:auto; max-height:320px; } }
+  .demo { grid-column:1 / -1; border-top:1px solid var(--line); padding-top:20px; }
+  .demo h4 { margin:0 26px 4px; font-size:16px; }
+  .demo p { margin:0 26px 16px; color:var(--muted); font-size:14.5px; max-width:760px; }
+  .demo video { width:100%; aspect-ratio:16/9; display:block; background:#000; border-radius:8px; border:1px solid var(--line); }
+  @media (max-width:820px){ .demo h4, .demo p { margin-left:18px; margin-right:18px; } }
   .project .img.art { background:linear-gradient(135deg,#1f4e79,#2a7a62); color:#fff; }
   .project .body { padding:24px 26px; }
   .cat { font-size:12px; text-transform:uppercase; letter-spacing:.6px; color:var(--accent-2); font-weight:700; }
@@ -319,6 +324,14 @@
         <div class="gallery two">
           <figure class="wide"><a href="../images/cm-envelope.png" target="_blank" rel="noopener"><img src="../images/cm-envelope.png" alt="Envelope spectrum with bearing fault frequency markers"></a><figcaption>Envelope spectrum of a spindle bearing pair, with BPFO, BPFI, BSF and FTF markers</figcaption></figure>
           <figure class="wide"><a href="../images/cm-report.png" target="_blank" rel="noopener"><img src="../images/cm-report.png" alt="Automatic report flagging bearings and gear stages"></a><figcaption>Automatic report from a 5000 rpm test: each bearing and gear stage flagged OK or FAULT</figcaption></figure>
+        </div>
+        <div class="demo" id="simbad-demo">
+          <h4>Demo: a good holder, a poorly assembled holder and a defective holder</h4>
+          <p>Screen recordings of the app on my thesis measurements: Quick check sorts each holder, then Diagnostics shows why, with gear and bearing tables and labelled spectra. About 10 minutes, no sound, with captions.</p>
+          <div class="gallery two">
+            <figure class="wide"><video controls controlslist="nodownload noremoteplayback" disablepictureinpicture preload="none" poster="../images/simbad-demo-poster.jpg" oncontextmenu="return false"><source src="../videos/simbad-demo-en.mp4" type="video/mp4"></video><figcaption>English captions</figcaption></figure>
+            <figure class="wide"><video controls controlslist="nodownload noremoteplayback" disablepictureinpicture preload="none" poster="../images/simbad-demo-poster.jpg" oncontextmenu="return false"><source src="../videos/simbad-demo-de.mp4" type="video/mp4"></video><figcaption>German captions</figcaption></figure>
+          </div>
         </div>
       </article>
 
@@ -577,6 +590,10 @@
     "Faults traced to a physical cause per component, validated on public bearing-fault datasets and real test-bench measurements.": "Schäden werden je Bauteil einer physikalischen Ursache zugeordnet, validiert an öffentlichen Lagerschadensdaten und realen Prüfstandsmessungen.",
     "Envelope spectrum of a spindle bearing pair, with BPFO, BPFI, BSF and FTF markers": "Hüllkurvenspektrum eines Spindellagerpaars mit Markierungen für BPFO, BPFI, BSF und FTF",
     "Automatic report from a 5000 rpm test: each bearing and gear stage flagged OK or FAULT": "Automatischer Bericht aus einem Versuch bei 5000 1/min: jedes Lager und jede Getriebestufe als OK oder FEHLER bewertet",
+    "Demo: a good holder, a poorly assembled holder and a defective holder": "Demo: ein guter, ein schlecht montierter und ein defekter Werkzeughalter",
+    "Screen recordings of the app on my thesis measurements: Quick check sorts each holder, then Diagnostics shows why, with gear and bearing tables and labelled spectra. About 10 minutes, no sound, with captions.": "Bildschirmaufnahmen der App mit meinen Messungen aus der Masterarbeit: Der Schnelltest ordnet jeden Halter ein, die Diagnose zeigt warum, mit Verzahnungs- und Lagertabellen und beschrifteten Spektren. Etwa 10 Minuten, ohne Ton, mit Untertiteln.",
+    "English captions": "Untertitel Englisch",
+    "German captions": "Untertitel Deutsch",
 
     "Technical writing for engineers and the people who work with them.": "Fachartikel für Ingenieure und alle, die mit ihnen arbeiten. Die Artikel sind auf Englisch.",
     "Why lapping is specified for noise but also improves function, catches manufacturing deviations before assembly and protects operators from noise exposure.": "Warum Läppen wegen des Geräuschs vorgeschrieben wird, aber auch die Funktion verbessert, Fertigungsabweichungen vor der Montage aufdeckt und Mitarbeitende vor Lärm schützt.",
